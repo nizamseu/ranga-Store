@@ -54,7 +54,7 @@ const updatePrice = (id, value) => {
 
 // set innerText function
 const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = Math.round(value);
+  document.getElementById(id).innerText = value;
 };
 
 // update delivery charge and total Tax
@@ -77,5 +77,7 @@ const updateTaxAndCharge = () => {
 //grandTotal update function
 const updateTotal = () => {
   const grandTotal = getInputValue("price") + getInputValue("delivery-charge") + getInputValue("total-tax");
+  console.log("total", grandTotal);
   document.getElementById("total").innerText = grandTotal;
 };
+updateTotal();
