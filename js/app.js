@@ -20,9 +20,10 @@ const showProducts = (products) => {
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
+      <p><span> Rating: ${product?.rating?.rate} </span>   <span> Total Rating: ${product?.rating?.count}</span></p>
       <h2>Price: $ ${product.price}</h2>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <button onClick= "details(${product.id})"  id="details-btn" class="btn btn-danger">Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -79,4 +80,23 @@ const updateTaxAndCharge = () => {
 const updateTotal = () => {
   const grandTotal = getInputValue("price") + getInputValue("delivery-charge") + getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
+};
+
+const details = (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displaySingleData(data));
+};
+
+const displaySingleData = (data) => {
+  const detail = document.getElementById("detail");
+  detail.innerHTML = `
+      <h3>${data.title}</h3>
+      <img height='200px' class ='images' src ='${data.image}'>
+      <h3>Price : ${data.price}</h3>
+      <p><span> Rating: ${data?.rating?.rate} </span>   <span> Total Rating: ${data?.rating?.count}</span></p>
+      
+  `;
 };
