@@ -8,7 +8,6 @@ loadProducts();
 
 // show all product in UI
 const showProducts = (products) => {
-  console.log(products);
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
     const image = product.images;
@@ -48,9 +47,7 @@ const getInputValue = (id) => {
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
-  console.log(convertPrice);
   const total = parseFloat(convertedOldPrice) + convertPrice;
-  console.log(total);
   document.getElementById(id).innerText = total.toFixed(2);
 };
 
