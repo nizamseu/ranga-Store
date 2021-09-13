@@ -93,6 +93,7 @@ const displaySingleData = (data) => {
       <h3>${data.title}</h3>
       <img height='200px' class ='images' src ='${data.image}'>
       <h3>Price : ${data.price}</h3>
+      <p>Category: ${data.category}</p>
       <p><span> Rating: ${data?.rating?.rate} </span>   <span> Total Rating: ${data?.rating?.count}</span></p>
       
   `;
